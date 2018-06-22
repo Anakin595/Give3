@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".SectionsActivity"></activity>
+        <activity android:name=".SectionsActivity" />
+        <activity android:name=".AlertSectionActivity" />
     </application>
 
 </manifest>

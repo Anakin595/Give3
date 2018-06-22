@@ -1,27 +1,31 @@
 package com.give3.gizrog.give3;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-
 import java.util.List;
 
-public class Section implements ParentObject {
+public class Section {
 
     String title;
 
-    private List<Object> mChildrenList;
+    private List<String> studentsNames;
 
-    Section(String title) {
+    public Section(String title, List<String> studentsNames) {
+        this.title = title;
+        this.studentsNames = studentsNames;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    @Override
-    public List<Object> getChildObjectList() {
-        return mChildrenList;
+    public List<String> getStudentsNames() {
+        return studentsNames;
     }
 
-    @Override
-    public void setChildObjectList(List<Object> list) {
-        mChildrenList = list;
+    public void setStudentsNames(List<String> studentsNames) {
+        this.studentsNames = studentsNames;
     }
-
 }
