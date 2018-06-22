@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlertSectionActivity"
-    android:orientation="vertical"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginVertical="150dp">
+    tools:context=".SectionSquadActivity"
+    android:background="@color/colorPrimaryDark"
+    android:transitionName="@string/transition_string"
+    android:orientation="vertical">
 
 
     <ListView
-        android:id="@+id/listview_alert"
+        android:id="@+id/listview_section_squad"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="4">
-
+        android:layout_height="0dp"
+        android:layout_weight="7">
     </ListView>
 
     <Button
         android:id="@+id/btn_alert_ok"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:minHeight="30dp"
+        android:shadowRadius="10"
         android:text="OK"
         android:layout_gravity="center|bottom"
         android:layout_weight="1"

@@ -2,6 +2,8 @@ package com.give3.gizrog.give3;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,15 +23,19 @@ public class SectionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sections);
-        sections.add(new Section("+", null));
+        List<String> students = new ArrayList<>();
+        students.add("Tomasz Tkaczyk");
+        sections.add(new Section("+", students));
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_section);
         SectionRecyclerViewAdapter adapter = new SectionRecyclerViewAdapter(this, sections);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.setAdapter(adapter);
 
+        getWindow().setEnterTransition(null);
+    }
 
-        //getWindow().setEnterTransition(null);
+    public void animateIntent(View view) {
     }
 
     public static Intent makeIntent(Context ctx) {

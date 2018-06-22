@@ -12,7 +12,9 @@
     android:focusable="true"
     app:cardBackgroundColor="@color/colorPrimaryDark"
     app:cardCornerRadius="4dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    android:transitionName="@string/transition_string"
+    android:onClick="animateIntent">
 
     <TextView
         android:id="@+id/item_text_section"
