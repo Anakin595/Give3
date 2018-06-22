@@ -21,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sectionsIntent = SectionsActivity.makeIntent(HomeActivity.this);
+                Intent sectionsIntent = MenuActivity.makeIntent(HomeActivity.this);
                 startActivity(sectionsIntent);
             }
         });

@@ -6,8 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_parent_listitem, parent, false);
         return new ViewHolder(view);
     }
 
@@ -35,16 +34,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "onBindViewHolder: called");
 
         holder.textViewListItem.setText(data.get(position));
-
-        Button addBtn = holder.parentLayout.findViewById(R.id.add_listitem);
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: add new item.");
-                data.add("new section.....");
-                
-            }
-        });
     }
 
     @Override
@@ -55,11 +44,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewListItem;
-        RelativeLayout parentLayout;
+        LinearLayout parentLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textViewListItem = itemView.findViewById(R.id.text_listitem);
+            textViewListItem = itemView.findViewById(R.id.parent_text_listitem);
             parentLayout = itemView.findViewById(R.id.parent_listitem_layout);
         }
     }
