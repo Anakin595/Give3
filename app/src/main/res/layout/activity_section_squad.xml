@@ -9,6 +9,14 @@
     android:transitionName="@string/transition_string"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/listview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Section #"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/listview_section_squad"
@@ -18,7 +26,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/btn_alert_ok"
+        android:id="@+id/button_accept_listview"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:minHeight="30dp"
