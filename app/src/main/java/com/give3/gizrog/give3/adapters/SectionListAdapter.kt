@@ -59,17 +59,15 @@ class SectionListAdapter(private var activity: Activity, private var items: Arra
         })
 
 
-        viewHolder.btnOk?.setOnClickListener({
+        viewHolder.btnOk?.setOnClickListener {
             items.add("add...")
-            //Toast.makeText(this.activity, "Added", Toast.LENGTH_LONG).show()
             this.notifyDataSetChanged()
-        })
+        }
 
-        viewHolder.btnDel?.setOnClickListener({
+        viewHolder.btnDel?.setOnClickListener {
             items.removeAt(position)
-            //Toast.makeText(this.activity, "Deleted", Toast.LENGTH_LONG).show()
             this.notifyDataSetChanged()
-        })
+        }
 
         return view as View
     }

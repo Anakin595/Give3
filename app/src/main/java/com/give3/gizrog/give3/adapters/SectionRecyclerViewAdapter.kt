@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.give3.gizrog.give3.R
-import com.give3.gizrog.give3.Section
+import com.give3.gizrog.give3.models.Section
 import com.give3.gizrog.give3.listeners.RecyclerViewClickListener
 
 class SectionRecyclerViewAdapter(private val mContext: Context,
@@ -24,7 +24,7 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
 
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: called")
-        Log.d(TAG, "position = " + position)
+        holder.sectionTitle.text = sections[position].title
     }
 
     override fun getItemCount(): Int {
@@ -34,24 +34,19 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
     inner class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 
-        internal var sectionTitle: TextView
-        internal var cardView: CardView
+        internal var sectionTitle: TextView = itemView.findViewById(R.id.item_text_section)
+        internal var cardView: CardView = itemView.findViewById(R.id.item_cardView_section)
 
         init {
-            this.sectionTitle = itemView.findViewById(R.id.item_text_section)
-            this.cardView = itemView.findViewById(R.id.item_cardView_section)
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(v: View) {
             itemListener.recyclerViewListClicked(v, this.position)
-            this.sectionTitle.text = if (this.sectionTitle.text == "+") "+" else this.position.toString()
         }
     }
 
     companion object {
-
-        private const val NEW_ITEM = "+"
         private val TAG = "SecRecViewAdapter"
     }
 }

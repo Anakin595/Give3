@@ -29,7 +29,7 @@
         android:gravity="center"
         android:layout_margin="10dp"
         android:background="@drawable/layout_listitem_background"
-        android:transitionName="fromMenu"
+        android:transitionName="@string/transition_menu"
         />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:background="@drawable/layout_listitem_background"
-        android:transitionName="fromMenu"
+        android:transitionName="@string/transition_menu"
         android:layout_height="0dp" />
 
     <RelativeLayout

@@ -19,13 +19,13 @@
         android:textAlignment="center"
         android:layout_gravity="center"
         android:background="@drawable/layout_listitem_background"
-        android:transitionName="fromMenu"
+        android:transitionName="@string/transition_menu"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@+id/sections_done_button"
+        android:layout_above="@+id/button_sections_save"
         android:layout_below="@+id/textView_section_header"
         >
         <android.support.v7.widget.RecyclerView
@@ -39,7 +39,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/sections_done_button"
+        android:id="@+id/button_sections_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="40dp"

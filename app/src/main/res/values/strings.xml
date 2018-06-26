@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Give3</string>
-    <string name="transition_string">fromCard</string>
+    <string name="transition_card">card</string>
+    <string name="transition_menu">menu</string>
 </resources>

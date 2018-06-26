@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SectionSquadActivity"
     android:background="@color/colorPrimaryDark"
-    android:transitionName="@string/transition_string"
+    android:transitionName="@string/transition_card"
     android:orientation="vertical">
 
     <TextView
