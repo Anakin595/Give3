@@ -27,20 +27,27 @@
         android:layout_height="0dp"
         android:layout_above="@+id/button_sections_save"
         android:layout_below="@+id/textView_section_header"
+        android:orientation="horizontal"
         >
         <android.support.v7.widget.RecyclerView
+            android:layout_weight="1"
             android:id="@+id/recyclerView_section"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:gravity="center_horizontal"
             />
-
+        <Button
+            android:id="@+id/button_add_section"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="+"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/button_sections_save"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="40dp"
         android:text="Done"

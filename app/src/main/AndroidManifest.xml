@@ -20,7 +20,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".SectionsActivity" />
         <activity android:name=".SectionSquadActivity" />
-        <activity android:name=".TasksActivity"></activity>
+        <activity android:name=".TasksActivity" />
+        <activity android:name=".AssessmentActivity"></activity>
     </application>
 
 </manifest>

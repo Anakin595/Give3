@@ -5,20 +5,16 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class TasksActivity : AppCompatActivity() {
+class AssessmentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tasks)
+        setContentView(R.layout.activity_assessment)
     }
 
     companion object {
-
-        const val RESULT_TASKS: Int = 0
-        const val KEY_TASKS: String = "Tasks"
-
-        fun makeIntent(ctx: Context): Intent {
-            return Intent(ctx, TasksActivity::class.java)
+        fun makeIntent(context: Context): Intent {
+            return Intent(context, AssessmentActivity::class.java)
         }
     }
 }

@@ -10,62 +10,63 @@ import android.widget.TextView
 import com.give3.gizrog.give3.adapters.SectionListAdapter
 import com.give3.gizrog.give3.models.Section
 
-import kotlin.collections.ArrayList
-
 class SectionSquadActivity : AppCompatActivity() {
 
-    internal var controlBundle: Bundle? = null
-
-    internal var studentsNames: ArrayList<String> = ArrayList()
-
     private lateinit var section: Section
-    private var requestCode: Int? = null
-
-    var listView: ListView? = null
+    private var listView: ListView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_section_squad)
 
-        section = intent.getParcelableExtra("Section")
-        val sectionId = intent.getIntExtra("SectionId",0)
-        section.title = "$sectionId"
-        requestCode = intent.getIntExtra("RequestCode",1)
+        section = intent.getParcelableExtra(KEY_SECTION)
+        val lastIndex: Int = intent.getIntExtra("LastIndex", 0)
 
-        listView = findViewById(R.id.listview_section_squad)
-        val adapter = SectionListAdapter(this, section.studentsNames)
-        listView?.adapter = adapter
-        adapter.notifyDataSetChanged()
-
-        val titleTextView = findViewById<TextView>(R.id.listview_title)
-        val secTitle = "Section ${section.title}"
-        titleTextView.text = secTitle
+        initializeListView()
+        setTitleText(section.id, lastIndex)
 
         findViewById<Button>(R.id.button_accept_listview).setOnClickListener {
             val resultIntent = Intent()
             val bundle = Bundle()
-            bundle.putParcelable(KEY_SECTION, section)
-            bundle.putInt("SectionId", sectionId)
-            resultIntent.putExtras(bundle)
-            if(requestCode == RESULT_NEW_SECTION) {
+            if(section.id == 0) {
+                section.id = lastIndex + 1
+                section.title = section.id.toString()
                 setResult(RESULT_NEW_SECTION, resultIntent)
-            } else if (requestCode == RESULT_UPDATE_SECTION) {
+            } else {
                 setResult(RESULT_UPDATE_SECTION, resultIntent)
             }
+            bundle.putParcelable(KEY_SECTION, section)
+            resultIntent.putExtras(bundle)
             supportFinishAfterTransition()
         }
+    }
+
+    private fun setTitleText(id: Int, lastId: Int) {
+        val titleTextView = findViewById<TextView>(R.id.listview_title)
+        titleTextView.text  = if(id == 0) {
+            "New section (${lastId + 1})"
+        } else {
+            "Section $id"
+        }
+    }
+
+    private fun initializeListView() {
+        listView = findViewById(R.id.listview_section_squad)
+        val adapter = SectionListAdapter(this, section.studentsNames)
+        listView?.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     companion object {
 
         const val KEY_SECTION = "Section"
-        const val KEY_STUDENTS = "Students"
+        const val KEY_REQUEST_CODE = "RequestCode"
         const val RESULT_NEW_SECTION = 1
         const val RESULT_UPDATE_SECTION = 0
 
 
 
-        fun makeIntent(context: Context, bundle: Bundle): Intent {
+        fun makeIntent(context: Context): Intent {
             return Intent(context, SectionSquadActivity::class.java)
         }
     }
