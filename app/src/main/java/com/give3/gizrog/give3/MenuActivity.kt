@@ -6,7 +6,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
+import android.widget.LinearLayout
 import com.give3.gizrog.give3.models.AppData
 
 import java.util.ArrayList
@@ -27,16 +27,16 @@ class MenuActivity : BaseAppCompactActivity() {
     private fun initialize() {
         initializeSectionsButton()
         initializeTasksButton()
-        initializeNextButton()
+        initializeDoneButton()
     }
 
     private fun initializeSectionsButton() {
-        val view = findViewById<TextView>(R.id.textView_section)
+        val view = findViewById<Button>(R.id.button_sections)
         view.setOnClickListener {
             val sectionsIntent = SectionsActivity.makeIntent(this@MenuActivity)
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     this@MenuActivity,
-                    findViewById(R.id.textView_section),
+                    view,
                     getString(R.string.transition_menu))
             window.enterTransition = null
             sectionsIntent.putParcelableArrayListExtra("Sections", appData?.sections)
@@ -45,25 +45,25 @@ class MenuActivity : BaseAppCompactActivity() {
     }
 
     private fun initializeTasksButton() {
-        val view = findViewById<TextView>(R.id.textView_tasks)
+        val view = findViewById<Button>(R.id.button_tasks)
         view.setOnClickListener {
             val sectionsIntent = TasksActivity.makeIntent(this@MenuActivity)
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     this@MenuActivity,
-                    findViewById(R.id.textView_tasks),
+                    view,
                     getString(R.string.transition_menu))
             window.enterTransition = null
             startActivityForResult(this, sectionsIntent, REQUEST_TASK, optionsCompat.toBundle())
         }
     }
 
-    private fun initializeNextButton() {
-        findViewById<Button>(R.id.button_next).setOnClickListener {
+    private fun initializeDoneButton() {
+        findViewById<LinearLayout>(R.id.layout_done).setOnClickListener {
             if(appData!!.isComplete()) {
                 val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
                 val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         this@MenuActivity,
-                        findViewById(R.id.textView_tasks),
+                        findViewById(R.id.layout_done),
                         getString(R.string.transition_menu))
                 window.enterTransition = null
                 startActivityForResult(this, assessmentIntent, REQUEST_TASK, optionsCompat.toBundle())
@@ -77,11 +77,9 @@ class MenuActivity : BaseAppCompactActivity() {
             RESULT_SECTION -> appData?.sections = data!!.getParcelableArrayListExtra(KEY_SECTIONS)
             REQUEST_TASK -> appData?.tasks = data!!.getParcelableArrayListExtra(KEY_TASKS)
         }
-
     }
 
     companion object {
-
 
         const val KEY_SECTIONS = SectionsActivity.KEY_SECTIONS
         const val KEY_TASKS = TasksActivity.KEY_TASKS

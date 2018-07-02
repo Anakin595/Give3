@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#5CFF89</color>
-    <color name="colorPrimaryDark">#547F60</color>
-    <color name="colorAccent">#A9FFC0</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryMedium">#d1d1d1</color>
+    <color name="colorPrimaryMediumAlpha">#30d1d1d1</color>
+    <color name="colorAccent">#24a0f9</color>
+    <color name="colorControlNormal">#000000</color>
     <color name="listItemColor">#50AAFF</color>
 
 </resources>

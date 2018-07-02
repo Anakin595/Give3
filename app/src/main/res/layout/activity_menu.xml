@@ -1,71 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuActivity"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
     >
 
-
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layout_sections"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <TextView
-        android:layout_weight="1"
-        android:id="@+id/textView_section"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:padding="15dp"
-        android:textSize="40sp"
-        android:text="Sections(0)"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
         android:gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/layout_listitem_background"
-        android:transitionName="@string/transition_menu"
-        />
-
-    <TextView
-        android:layout_weight="1"
-        android:id="@+id/textView_tasks"
-        android:layout_width="fill_parent"
-        android:padding="15dp"
-        android:textSize="40sp"
-        android:text="Tasks(0)"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:background="@drawable/layout_listitem_background"
-        android:transitionName="@string/transition_menu"
-        android:layout_height="0dp" />
-
-    <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layout_tasks"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/layout_left_item">
 
         <Button
-            android:id="@+id/button_next"
+            android:id="@+id/button_sections"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@drawable/baseline_group_24" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NEXT"
-            android:enabled="false"
-            android:layout_margin="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            />
+            android:text="Sections"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+    </LinearLayout>
 
-    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_tasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layout_sections"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/layout_right_item">
 
+        <Button
+            android:id="@+id/button_tasks"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@drawable/baseline_check_box_24" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasks"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/layout_bottom_buttons"
+        android:paddingHorizontal="15dp">
+        <Button
+            android:id="@+id/button_done"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/baseline_done_24"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:typeface="sans" />
+    </LinearLayout>
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
