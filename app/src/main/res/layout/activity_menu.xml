@@ -20,7 +20,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/layout_tasks"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/layout_left_item">
+        android:background="@drawable/layout_left_item"
+        android:elevation="10dp">
 
         <Button
             android:id="@+id/button_sections"
@@ -34,7 +35,8 @@
             android:text="Sections"
             android:textSize="36sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -48,7 +50,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/layout_sections"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/layout_right_item">
+        android:background="@drawable/layout_right_item"
+        android:elevation="10dp">
 
         <Button
             android:id="@+id/button_tasks"
@@ -78,7 +81,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="@drawable/layout_bottom_buttons"
-        android:paddingHorizontal="15dp">
+        android:elevation="10dp">
         <Button
             android:id="@+id/button_done"
             android:layout_width="50dp"

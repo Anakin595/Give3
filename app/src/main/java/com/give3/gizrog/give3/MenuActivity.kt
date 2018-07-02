@@ -20,7 +20,6 @@ class MenuActivity : BaseAppCompactActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
         Log.d(TAG, "onCreate: started.")
-
         initialize()
     }
 
@@ -58,17 +57,16 @@ class MenuActivity : BaseAppCompactActivity() {
     }
 
     private fun initializeDoneButton() {
-        findViewById<LinearLayout>(R.id.layout_done).setOnClickListener {
-            if(appData!!.isComplete()) {
-                val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
-                val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        this@MenuActivity,
-                        findViewById(R.id.layout_done),
-                        getString(R.string.transition_menu))
-                window.enterTransition = null
-                startActivityForResult(this, assessmentIntent, REQUEST_TASK, optionsCompat.toBundle())
-            }
+        findViewById<Button>(R.id.button_done).setOnClickListener {
+            val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
+            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this@MenuActivity,
+                    findViewById(R.id.layout_done),
+                    getString(R.string.transition_menu))
+            window.enterTransition = null
+            startActivityForResult(this, assessmentIntent, REQUEST_TASK, optionsCompat.toBundle())
         }
+        updateDoneButtonStatus()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -77,6 +75,12 @@ class MenuActivity : BaseAppCompactActivity() {
             RESULT_SECTION -> appData?.sections = data!!.getParcelableArrayListExtra(KEY_SECTIONS)
             REQUEST_TASK -> appData?.tasks = data!!.getParcelableArrayListExtra(KEY_TASKS)
         }
+        updateDoneButtonStatus()
+    }
+
+    private fun updateDoneButtonStatus() {
+        val button = findViewById<Button>(R.id.button_done)
+        button.isEnabled = appData?.isComplete()!!
     }
 
     companion object {
