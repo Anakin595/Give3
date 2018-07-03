@@ -33,12 +33,13 @@ class SectionsActivity : BaseAppCompactActivity(), RecyclerViewClickListener {
 
     private fun initialize() {
         initializeSaveButton()
+        initializeAddButton()
         setRecyclerViewAdapter()
         window.enterTransition = null
     }
 
     private fun initializeSaveButton() {
-        findViewById<Button>(R.id.button_sections_save).setOnClickListener {
+        findViewById<Button>(R.id.button_done).setOnClickListener {
             if(sections.size <= 1) {
                 Toast.makeText(applicationContext, "Create at least one section!", Toast.LENGTH_SHORT).show()
             } else {
@@ -49,6 +50,17 @@ class SectionsActivity : BaseAppCompactActivity(), RecyclerViewClickListener {
                 setResult(RESULT_SECTION, resultIntent)
                 supportFinishAfterTransition()
             }
+        }
+    }
+
+    private fun initializeAddButton() {
+        findViewById<Button>(R.id.button_add).setOnClickListener {
+            val resultIntent = Intent()
+            val bundle = Bundle()
+            bundle.putParcelableArrayList(KEY_SECTIONS, sections)
+            resultIntent.putExtras(bundle)
+            setResult(RESULT_SECTION, resultIntent)
+            supportFinishAfterTransition()
         }
     }
 

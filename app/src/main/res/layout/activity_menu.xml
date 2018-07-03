@@ -13,15 +13,16 @@
         android:id="@+id/layout_sections"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:background="@drawable/layout_left_item"
+        android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/layout_tasks"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/layout_left_item"
-        android:elevation="10dp">
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/button_sections"
@@ -35,8 +36,7 @@
             android:text="Sections"
             android:textSize="36sp"
             android:textStyle="bold"
-            android:typeface="normal"
-            />
+            android:typeface="normal" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,6 +68,34 @@
             android:typeface="sans" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/text_count_sections"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="7dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/layout_count_tag"
+        android:translationY="-15dp"
+        android:text="#"
+        android:textSize="36sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/layout_sections"
+        app:layout_constraintTop_toBottomOf="@+id/layout_sections" />
+
+    <TextView
+        android:id="@+id/text_count_tasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="7dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/layout_count_tag"
+        android:translationY="-15dp"
+        android:text="#"
+        android:textSize="36sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/layout_tasks"
+        app:layout_constraintTop_toBottomOf="@+id/layout_tasks" />
+
     <LinearLayout
         android:id="@+id/layout_done"
         android:layout_width="wrap_content"
@@ -81,7 +109,8 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="@drawable/layout_bottom_buttons"
-        android:elevation="10dp">
+        android:elevation="10dp"
+        android:paddingHorizontal="30dp">
         <Button
             android:id="@+id/button_done"
             android:layout_width="50dp"

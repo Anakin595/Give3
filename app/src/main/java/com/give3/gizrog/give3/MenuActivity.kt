@@ -6,7 +6,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.LinearLayout
+import android.widget.TextView
 import com.give3.gizrog.give3.models.AppData
 
 import java.util.ArrayList
@@ -66,7 +66,7 @@ class MenuActivity : BaseAppCompactActivity() {
             window.enterTransition = null
             startActivityForResult(this, assessmentIntent, REQUEST_TASK, optionsCompat.toBundle())
         }
-        updateDoneButtonStatus()
+        updateActivityLayoutStatus()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -75,12 +75,16 @@ class MenuActivity : BaseAppCompactActivity() {
             RESULT_SECTION -> appData?.sections = data!!.getParcelableArrayListExtra(KEY_SECTIONS)
             REQUEST_TASK -> appData?.tasks = data!!.getParcelableArrayListExtra(KEY_TASKS)
         }
-        updateDoneButtonStatus()
+        updateActivityLayoutStatus()
     }
 
-    private fun updateDoneButtonStatus() {
+    private fun updateActivityLayoutStatus() {
         val button = findViewById<Button>(R.id.button_done)
         button.isEnabled = appData?.isComplete()!!
+        val sectionsCountTextView: TextView = findViewById(R.id.text_count_sections)
+        sectionsCountTextView.text = appData.sections.size.toString()
+        val tasksCountTextView: TextView = findViewById(R.id.text_count_tasks)
+        tasksCountTextView.text = appData.tasks.size.toString()
     }
 
     companion object {
