@@ -1,39 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SectionSquadActivity"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     android:transitionName="@string/transition_card"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/listview_title"
-        android:layout_width="match_parent"
+        android:id="@+id/text_section_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Section #"
         android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ListView
         android:id="@+id/listview_section_squad"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7">
-    </ListView>
+        app:layout_constraintBottom_toTopOf="@id/clayout_edit_section_bottom_buttons"
+        app:layout_constraintTop_toBottomOf="@id/text_section_title"/>
 
-    <Button
-        android:id="@+id/button_accept_listview"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clayout_edit_section_bottom_buttons"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:minHeight="30dp"
-        android:shadowRadius="10"
-        android:text="OK"
-        android:layout_gravity="center|bottom"
-        android:layout_weight="1"
-        />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/layout_bottom_buttons"
+        android:elevation="15dp"
+        android:paddingHorizontal="20dp">
 
-</LinearLayout>
+        <Button
+            android:id="@+id/button_section_squad_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/baseline_person_add_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_section_squad_done"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Add"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/button_section_squad_add"
+            app:layout_constraintStart_toStartOf="@+id/button_section_squad_add"
+            app:layout_constraintTop_toBottomOf="@+id/button_section_squad_add" />
+
+        <Button
+            android:id="@+id/button_section_squad_done"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/baseline_done_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Done"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/button_section_squad_done"
+            app:layout_constraintStart_toStartOf="@+id/button_section_squad_done"
+            app:layout_constraintTop_toBottomOf="@+id/button_section_squad_done" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

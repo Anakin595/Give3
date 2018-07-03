@@ -34,8 +34,8 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
     inner class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
 
-        internal var sectionTitle: TextView = itemView.findViewById(R.id.item_text_section)
-        internal var cardView: CardView = itemView.findViewById(R.id.item_cardView_section)
+        internal var sectionTitle: TextView = itemView.findViewById(R.id.text_cardView_section)
+        internal var cardView: CardView = itemView.findViewById(R.id.cardView_section)
 
         init {
             itemView.setOnClickListener(this)

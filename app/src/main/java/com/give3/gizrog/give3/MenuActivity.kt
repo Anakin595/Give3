@@ -57,7 +57,7 @@ class MenuActivity : BaseAppCompactActivity() {
     }
 
     private fun initializeDoneButton() {
-        findViewById<Button>(R.id.button_done).setOnClickListener {
+        findViewById<Button>(R.id.button_section_done).setOnClickListener {
             val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     this@MenuActivity,
@@ -79,7 +79,7 @@ class MenuActivity : BaseAppCompactActivity() {
     }
 
     private fun updateActivityLayoutStatus() {
-        val button = findViewById<Button>(R.id.button_done)
+        val button = findViewById<Button>(R.id.button_section_done)
         button.isEnabled = appData?.isComplete()!!
         val sectionsCountTextView: TextView = findViewById(R.id.text_count_sections)
         sectionsCountTextView.text = appData.sections.size.toString()

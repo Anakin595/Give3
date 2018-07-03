@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_cardView_section"
+    android:id="@+id/cardView_section"
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:layout_margin="4dp"
@@ -14,7 +14,6 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="4dp"
     android:transitionName="@string/transition_card"
-    android:onClick="animateIntent"
     android:elevation="15dp">
 
     <android.support.constraint.ConstraintLayout
@@ -22,7 +21,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/item_text_section"
+            android:id="@+id/text_cardView_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -31,7 +30,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:elevation="15dp"
-            tools:text="+"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textColor="@color/colorAccent"
             android:textSize="70sp"
@@ -39,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            tools:text="#" />
 
     </android.support.constraint.ConstraintLayout>
 

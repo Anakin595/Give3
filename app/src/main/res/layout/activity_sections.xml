@@ -24,7 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:background="@drawable/layout_listitem_background"
+        android:background="@drawable/layout_listitem_section_person"
         android:padding="15dp"
         android:text="Sections"
         android:textAlignment="center"
@@ -59,35 +59,91 @@
         android:elevation="15dp"
         android:paddingHorizontal="20dp">
 
-        <Button
-            android:id="@+id/button_add"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/baseline_group_add_24"
-            app:layout_constraintEnd_toStartOf="@+id/button_done"
-            app:layout_constraintHorizontal_chainStyle="spread_inside" />
-
-        <TextView
-            android:id="@+id/textView"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clayout_bottom_buttons_focus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Add"
-            android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/button_add"
-            app:layout_constraintStart_toStartOf="@+id/button_add"
-            app:layout_constraintTop_toBottomOf="@+id/button_add" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_section_done"
+            android:background="@drawable/layout_bottom_buttons"
+            android:elevation="15dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/button_section_edit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/baseline_edit_24"
+                app:layout_constraintEnd_toStartOf="@+id/button_section_delete"
+                app:layout_constraintHorizontal_chainStyle="spread_inside" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Add"
+                android:typeface="sans"
+                app:layout_constraintEnd_toEndOf="@+id/button_section_edit"
+                app:layout_constraintStart_toStartOf="@+id/button_section_edit"
+                app:layout_constraintTop_toBottomOf="@+id/button_section_edit" />
+            <Button
+                android:id="@+id/button_section_delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/baseline_delete_24"
+                app:layout_constraintStart_toEndOf="@id/button_section_edit" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Done"
+                android:typeface="sans"
+                app:layout_constraintEnd_toEndOf="@+id/button_section_delete"
+                app:layout_constraintStart_toStartOf="@+id/button_section_delete"
+                app:layout_constraintTop_toBottomOf="@+id/button_section_delete" />
+        </android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clayout_bottom_buttons_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_section_done"
+            android:background="@drawable/layout_bottom_buttons">
+            <Button
+                android:id="@+id/button_section_add"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/baseline_group_add_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Add"
+                android:typeface="sans"
+                app:layout_constraintEnd_toEndOf="@+id/button_section_add"
+                app:layout_constraintStart_toStartOf="@+id/button_section_add"
+                app:layout_constraintTop_toBottomOf="@+id/button_section_add" />
+        </android.support.constraint.ConstraintLayout>
 
         <Button
-            android:id="@+id/button_done"
+            android:id="@+id/button_section_done"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
             android:background="@drawable/baseline_done_24"
-            app:layout_constraintStart_toEndOf="@id/button_add" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -95,10 +151,9 @@
             android:layout_marginTop="8dp"
             android:text="Done"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/button_done"
-            app:layout_constraintStart_toStartOf="@+id/button_done"
-            app:layout_constraintTop_toBottomOf="@+id/button_done" />
+            app:layout_constraintEnd_toEndOf="@+id/button_section_done"
+            app:layout_constraintStart_toStartOf="@+id/button_section_done"
+            app:layout_constraintTop_toBottomOf="@+id/button_section_done" />
     </android.support.constraint.ConstraintLayout>
-
 
 </android.support.constraint.ConstraintLayout>

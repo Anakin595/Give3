@@ -4,49 +4,37 @@ import android.app.Activity
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.*
 import com.give3.gizrog.give3.R
 
 class SectionListAdapter(private var activity: Activity, private var items: ArrayList<String>): BaseAdapter() {
 
     private class ViewHolder(row: View?) {
-        var txtName: EditText? = null
-        var btnOk: Button? = null
-        var btnDel: Button? = null
-
-        init {
-            this.txtName = row?.findViewById(R.id.listview_text)
-            this.btnOk = row?.findViewById(R.id.add_listitem)
-            this.btnDel = row?.findViewById(R.id.delete_listitem)
-        }
+        var txtName: EditText? = row?.findViewById(R.id.text_listitem_section_person)
+        var btnDel: Button? = row?.findViewById(R.id.button_listitem_section_person_del)
     }
-
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View?
         val viewHolder: ViewHolder
         if (convertView == null) {
             val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.custom_listview_item, null)
+            view = inflater.inflate(R.layout.layout_listview_section_person_item, null)
             viewHolder = ViewHolder(view)
             view?.tag = viewHolder
+
         } else {
             view = convertView
             viewHolder = view.tag as ViewHolder
         }
         viewHolder.txtName?.setText(items[position])
 
-        if (position == 0) {
-            viewHolder.btnDel?.visibility = View.GONE
-        }
-
         viewHolder.txtName?.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -58,12 +46,6 @@ class SectionListAdapter(private var activity: Activity, private var items: Arra
             }
         })
 
-
-        viewHolder.btnOk?.setOnClickListener {
-            items.add("add...")
-            this.notifyDataSetChanged()
-        }
-
         viewHolder.btnDel?.setOnClickListener {
             items.removeAt(position)
             this.notifyDataSetChanged()
@@ -74,6 +56,11 @@ class SectionListAdapter(private var activity: Activity, private var items: Arra
 
     override fun getItem(position: Int): Any {
         return items[position]
+    }
+
+    fun add(item: String) {
+        items.add(item)
+        this.notifyDataSetChanged()
     }
 
     override fun getItemId(position: Int): Long {

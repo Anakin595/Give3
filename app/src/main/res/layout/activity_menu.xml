@@ -23,13 +23,11 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <Button
             android:id="@+id/button_sections"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:background="@drawable/baseline_group_24" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,7 +110,7 @@
         android:elevation="10dp"
         android:paddingHorizontal="30dp">
         <Button
-            android:id="@+id/button_done"
+            android:id="@+id/button_section_done"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/baseline_done_24"/>
