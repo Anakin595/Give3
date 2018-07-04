@@ -50,7 +50,6 @@ class MenuActivity : BaseAppCompactActivity() {
     private fun initializeDoneButton() {
         findViewById<Button>(R.id.button_section_done).setOnClickListener {
             val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
-            val sectionsAssessment =
             assessmentIntent.putParcelableArrayListExtra(KEY_SECTIONS, appData?.sections)
             assessmentIntent.putParcelableArrayListExtra(KEY_TASKS, appData?.tasks)
             startActivityForResult(this, assessmentIntent, REQUEST_DONE, null)

@@ -6,7 +6,9 @@
     android:id="@+id/listitem_child_assessment"
     android:background="@drawable/layout_person_listitem"
     android:padding="5dp"
-    android:layout_marginStart="30dp">
+    android:layout_marginStart="30dp"
+    android:focusable="false"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/text_listitem_child_assessment"

@@ -65,8 +65,7 @@ class SectionSquadActivity : AppCompatActivity() {
     }
 
     private fun setTitleText() {
-        val titleText = "Section ${section.title}"
-        text_section_title.text = titleText
+        text_section_title.text = section.title
     }
 
     companion object {

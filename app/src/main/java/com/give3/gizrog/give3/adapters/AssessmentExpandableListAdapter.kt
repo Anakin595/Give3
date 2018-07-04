@@ -3,9 +3,8 @@ package com.give3.gizrog.give3.adapters
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import android.view.LayoutInflater
-import com.bignerdranch.expandablerecyclerview.Adapter.ExpandableRecyclerAdapter
+import android.widget.BaseExpandableListAdapter
 import com.give3.gizrog.give3.R
 import com.give3.gizrog.give3.models.AssessmentSection
 import com.give3.gizrog.give3.models.Task
@@ -13,48 +12,78 @@ import com.give3.gizrog.give3.viewholders.AssessmentChildItemViewHolder
 import com.give3.gizrog.give3.viewholders.AssessmentParentItemViewHolder
 
 
-class AssessmentExpandableListAdapter(val context: Context, val parentItemList: List<*>) : ExpandableRecyclerAdapter<AssessmentParentItemViewHolder, AssessmentChildItemViewHolder>  {
+class AssessmentExpandableListAdapter(val context: Context, val parentItemList: ArrayList<AssessmentSection>): BaseExpandableListAdapter() {
 
-    private var mInflater: LayoutInflater = LayoutInflater.from(context)
-    private val sections: ArrayList<String> = ArrayList()
-    private var tasks: ArrayList<Task> = ArrayList()
+    val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-    override fun onCreateParentViewHolder(viewGroup: ViewGroup): AssessmentParentItemViewHolder {
-        val view = mInflater.inflate(R.layout.listitem_header_assessment, viewGroup, false)
-        return AssessmentParentItemViewHolder(view)
+    override fun getGroup(groupPosition: Int): AssessmentSection {
+        return parentItemList[groupPosition]
     }
 
-    override fun onCreateChildViewHolder(viewGroup: ViewGroup): AssessmentChildItemViewHolder {
-        val view = mInflater.inflate(R.layout.listitem_child_assessment, viewGroup, false)
-        return AssessmentChildItemViewHolder(view)
+    override fun isChildSelectable(p0: Int, p1: Int): Boolean {
+        return true
     }
 
-    override fun onBindParentViewHolder(parentViewHolder: AssessmentParentItemViewHolder, i: Int, parentObject: Any) {
-        val section = parentObject as AssessmentSection
-        sections.add(section.title)
-        parentViewHolder.textTitle.text = sections[i]
-        parentViewHolder.textGrade.text = section.grade.toString()
-        val completition = "${section.countTasksCompleted()}/${section.tasks.size}"
-        parentViewHolder.textCompletition.text = "0/0"
+    override fun hasStableIds(): Boolean {
+        return true
     }
 
-    override fun onBindChildViewHolder(childViewHolder: AssessmentChildItemViewHolder, i: Int, childObject: Any) {
-        val childItem = childObject as ArrayList<*>
-        val title = "Section $i"
-        childViewHolder.mChildTextView.setText(title)
-        if (i == 1) {
-            childViewHolder.mChildDeleteButton.setVisibility(View.GONE)
+    override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val parentViewHolder: AssessmentParentItemViewHolder
+        if(convertView == null) {
+            view = inflater.inflate(R.layout.listitem_parent_assessment, null)
+            parentViewHolder = AssessmentParentItemViewHolder(view)
+            view.tag = parentViewHolder
+        } else {
+            parentViewHolder = convertView.tag as AssessmentParentItemViewHolder
+            view = convertView
         }
+        val parentItem = getGroup(groupPosition)
+        parentViewHolder.textTitle.text = parentItem.section.title
+        parentViewHolder.textGrade.text = parentItem.calculateGrade().toString()
+        val completion = "${parentItem.countTasksCompleted()}/${getChildrenCount(groupPosition)}"
+        parentViewHolder.textCompletition.text = completion
 
-        childViewHolder.mChildAddButton.setOnClickListener(View.OnClickListener {
-            Toast.makeText(mContext, "TOASTT", Toast.LENGTH_SHORT).show()
-            addItem(i)
-        })
+        return view
     }
 
-    private fun addItem(i: Int) {
-
+    override fun getChildrenCount(groupPosition: Int): Int {
+        return parentItemList[groupPosition].tasks.size
     }
 
+    override fun getChild(groupPosition: Int, childPosition: Int): Task {
+        return parentItemList[groupPosition].tasks[childPosition]
+    }
+
+    override fun getGroupId(p0: Int): Long {
+        return 0
+    }
+
+    override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val childViewHolder: AssessmentChildItemViewHolder
+        if(convertView == null) {
+            view = inflater.inflate(R.layout.listitem_child_assessment, null)
+            childViewHolder = AssessmentChildItemViewHolder(view)
+            view.tag = childViewHolder
+        } else {
+            childViewHolder = convertView.tag as AssessmentChildItemViewHolder
+            view = convertView
+        }
+        val childItem = getChild(groupPosition, childPosition)
+        childViewHolder.textTask.text = childItem.title
+        childViewHolder.checkBox.isChecked = childItem.isComplete
+
+        return view
+    }
+
+    override fun getChildId(p0: Int, p1: Int): Long {
+        return 0
+    }
+
+    override fun getGroupCount(): Int {
+        return parentItemList.size
+    }
 
 }

@@ -11,7 +11,7 @@ class Section(var id: Int ,var title: String, var studentsNames: ArrayList<Strin
             parcel.readFloat())
 
     constructor(id: Int ,studentsNames: ArrayList<String>) :
-            this(id, (id+1).toString(), studentsNames, 3f)
+            this(id, "Section " + (id+1).toString(), studentsNames, 3f)
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
         p0?.writeInt(id)

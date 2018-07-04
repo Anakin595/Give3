@@ -24,7 +24,7 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
 
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: called")
-        holder.sectionTitle.text = sections[position].title
+        holder.sectionTitle.text = (sections[position].id + 1).toString()
         holder.cardView.elevation = sections[position].focus
     }
 
