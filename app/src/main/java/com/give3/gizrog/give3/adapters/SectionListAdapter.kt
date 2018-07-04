@@ -12,55 +12,42 @@ import com.give3.gizrog.give3.R
 
 class SectionListAdapter(private var activity: Activity, private var items: ArrayList<String>): BaseAdapter() {
 
-    private class ViewHolder(row: View?) {
-        var txtName: EditText? = row?.findViewById(R.id.text_listitem_section_person)
-        var btnDel: Button? = row?.findViewById(R.id.button_listitem_section_person_del)
-    }
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View?
-        val viewHolder: ViewHolder
+        val view: View
+        val sectionViewHolder: SectionViewHolder
         if (convertView == null) {
             val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.layout_listview_section_person_item, null)
-            viewHolder = ViewHolder(view)
-            view?.tag = viewHolder
-
+            view = inflater.inflate(R.layout.layout_listitem_section_person, null)
+            sectionViewHolder = SectionViewHolder(view)
+            view?.tag = sectionViewHolder
         } else {
+            sectionViewHolder = convertView.tag as SectionViewHolder
             view = convertView
-            viewHolder = view.tag as ViewHolder
         }
-        viewHolder.txtName?.setText(items[position])
 
-        viewHolder.txtName?.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        sectionViewHolder.ref = position
+        sectionViewHolder.txtName?.setText(items[position])
 
-            }
+        sectionViewHolder.txtName?.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                items[position] = s.toString()
-            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                items[position] = s.toString()
+                items[sectionViewHolder.ref] = s.toString()
             }
         })
 
-        viewHolder.btnDel?.setOnClickListener {
-            items.removeAt(position)
+        sectionViewHolder.btnDel?.setOnClickListener {
+            items.removeAt(sectionViewHolder.ref)
             this.notifyDataSetChanged()
         }
 
-        return view as View
+        return view
     }
 
     override fun getItem(position: Int): Any {
         return items[position]
-    }
-
-    fun add(item: String) {
-        items.add(item)
-        this.notifyDataSetChanged()
     }
 
     override fun getItemId(position: Int): Long {
@@ -69,6 +56,12 @@ class SectionListAdapter(private var activity: Activity, private var items: Arra
 
     override fun getCount(): Int {
         return items.size
+    }
+
+    private class SectionViewHolder(row: View?) {
+        var txtName: EditText? = row?.findViewById(R.id.text_listitem_section_person)
+        var btnDel: Button? = row?.findViewById(R.id.button_listitem_section_person_del)
+        var ref: Int = 0
     }
 
 }

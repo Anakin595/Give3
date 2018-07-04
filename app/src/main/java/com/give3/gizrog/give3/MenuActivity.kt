@@ -33,13 +33,8 @@ class MenuActivity : BaseAppCompactActivity() {
         val view = findViewById<Button>(R.id.button_sections)
         view.setOnClickListener {
             val sectionsIntent = SectionsActivity.makeIntent(this@MenuActivity)
-            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this@MenuActivity,
-                    view,
-                    getString(R.string.transition_menu))
-            window.enterTransition = null
-            sectionsIntent.putParcelableArrayListExtra("Sections", appData?.sections)
-            startActivityForResult(this, sectionsIntent, RESULT_SECTION, optionsCompat.toBundle())
+            sectionsIntent.putParcelableArrayListExtra(KEY_SECTIONS, appData?.sections)
+            startActivityForResult(this, sectionsIntent, RESULT_SECTION, null)
         }
     }
 
@@ -47,24 +42,18 @@ class MenuActivity : BaseAppCompactActivity() {
         val view = findViewById<Button>(R.id.button_tasks)
         view.setOnClickListener {
             val sectionsIntent = TasksActivity.makeIntent(this@MenuActivity)
-            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this@MenuActivity,
-                    view,
-                    getString(R.string.transition_menu))
-            window.enterTransition = null
-            startActivityForResult(this, sectionsIntent, REQUEST_TASK, optionsCompat.toBundle())
+            sectionsIntent.putParcelableArrayListExtra(KEY_TASKS, appData?.tasks)
+            startActivityForResult(this, sectionsIntent, REQUEST_TASK, null)
         }
     }
 
     private fun initializeDoneButton() {
         findViewById<Button>(R.id.button_section_done).setOnClickListener {
             val assessmentIntent = AssessmentActivity.makeIntent(this@MenuActivity)
-            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this@MenuActivity,
-                    findViewById(R.id.layout_done),
-                    getString(R.string.transition_menu))
-            window.enterTransition = null
-            startActivityForResult(this, assessmentIntent, REQUEST_TASK, optionsCompat.toBundle())
+            val sectionsAssessment =
+            assessmentIntent.putParcelableArrayListExtra(KEY_SECTIONS, appData?.sections)
+            assessmentIntent.putParcelableArrayListExtra(KEY_TASKS, appData?.tasks)
+            startActivityForResult(this, assessmentIntent, REQUEST_DONE, null)
         }
         updateActivityLayoutStatus()
     }
@@ -93,6 +82,7 @@ class MenuActivity : BaseAppCompactActivity() {
         const val KEY_TASKS = TasksActivity.KEY_TASKS
         const val RESULT_SECTION = SectionsActivity.RESULT_SECTION
         const val REQUEST_TASK = TasksActivity.RESULT_TASKS
+        const val REQUEST_DONE = 10
 
         private val TAG = "MenuActivity"
 

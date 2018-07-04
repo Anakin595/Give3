@@ -6,4 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".AssessmentActivity">
 
+
+    <TextView
+        android:id="@+id/text_assessment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assessment"
+        android:textSize="40sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/layout_header"/>
+
+
+
+    <ExpandableListView
+        android:id="@+id/expandlist_assessment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_assessment_header"
+        app:layout_constraintBottom_toTopOf="@id/clayout_assessment_bottom_buttons"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clayout_assessment_bottom_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/layout_bottom_buttons"
+        android:elevation="15dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" >
+
+        <Button
+            android:id="@+id/button_assessment_download"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/baseline_save_alt_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To '.csv'"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/button_assessment_download"
+            app:layout_constraintStart_toStartOf="@+id/button_assessment_download"
+            app:layout_constraintTop_toBottomOf="@+id/button_assessment_download" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

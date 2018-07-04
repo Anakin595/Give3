@@ -25,10 +25,17 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: called")
         holder.sectionTitle.text = sections[position].title
+        holder.cardView.elevation = sections[position].focus
     }
 
     override fun getItemCount(): Int {
         return sections.size
+    }
+
+    fun resetFocus() {
+        sections.forEach {
+            it.focus = 3f
+        }
     }
 
     inner class SectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -42,7 +49,7 @@ class SectionRecyclerViewAdapter(private val mContext: Context,
         }
 
         override fun onClick(v: View) {
-            itemListener.recyclerViewListClicked(v, this.position)
+            itemListener.recyclerViewListClicked(v, this.layoutPosition)
         }
     }
 

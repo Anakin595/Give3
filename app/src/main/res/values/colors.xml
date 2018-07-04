@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorPrimaryMedium">#d1d1d1</color>
     <color name="colorPrimaryMediumAlpha">#30d1d1d1</color>
-    <color name="colorAccent">#24a0f9</color>
+    <color name="colorAccent">#73c5ff</color>
     <color name="colorControlNormal">#000000</color>
-    <color name="listItemColor">#50AAFF</color>
+    <color name="listItemColor">#74bcff</color>
 
 </resources>

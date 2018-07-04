@@ -1,10 +1,8 @@
 package com.give3.gizrog.give3
 
-import android.content.Intent
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.Animation
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Handler().postDelayed({
-            val homeIntent = HomeActivity.makeIntent(this@MainActivity)
-            startActivity(homeIntent)
+            val menuIntent = MenuActivity.makeIntent(this@MainActivity)
+            startActivity(menuIntent)
             finish()
         }, WELCOME_SCREEN_TIME.toLong())
 

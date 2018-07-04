@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/listitem_header_assessment"
+    android:padding="10dp"
+    android:background="@drawable/layout_listitem_assessment_header">
+
+    <TextView
+        android:id="@+id/text_listitem_assessment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sections..."
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/text_listitem_assessment_header_grade"
+        android:text="#"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:padding="5dp"
+        android:background="@drawable/layout_person_listitem"
+        app:layout_constraintEnd_toStartOf="@id/text_listitem_assessment_header_completition"/>
+    <TextView
+        android:id="@+id/text_listitem_assessment_header_completition"
+        android:text="#/#"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

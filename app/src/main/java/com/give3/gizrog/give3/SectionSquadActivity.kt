@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import com.give3.gizrog.give3.adapters.SectionListAdapter
 import com.give3.gizrog.give3.models.Section
+import kotlinx.android.synthetic.main.activity_section_squad.*
 
 class SectionSquadActivity : AppCompatActivity() {
 
@@ -23,15 +23,16 @@ class SectionSquadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_section_squad)
 
         section = intent.getParcelableExtra(KEY_SECTION)
-        val lastIndex: Int = intent.getIntExtra("LastIndex", 0)
         requestCode = intent.getIntExtra(KEY_REQUEST_CODE, 0)
 
+        initialize()
+    }
+
+    private fun initialize() {
         initializeListView()
         initializeAddPersonButton()
         initializeDoneButton()
-
-        setTitleText(section.id, lastIndex)
-
+        setTitleText()
     }
 
     private fun initializeListView() {
@@ -43,7 +44,8 @@ class SectionSquadActivity : AppCompatActivity() {
 
     private fun initializeAddPersonButton() {
         findViewById<Button>(R.id.button_section_squad_add).setOnClickListener {
-            adapter.add("New...")
+            section.studentsNames.add("New...")
+            adapter.notifyDataSetChanged()
         }
     }
 
@@ -54,24 +56,17 @@ class SectionSquadActivity : AppCompatActivity() {
             } else {
                 val resultIntent = Intent()
                 val bundle = Bundle()
-                when(requestCode) {
-                    NEW_SECTION -> setResult(NEW_SECTION)
-                    UPDATE_SECTION -> setResult(UPDATE_SECTION)
-                }
                 bundle.putParcelable(KEY_SECTION, section)
                 resultIntent.putExtras(bundle)
+                setResult(requestCode, resultIntent)
                 supportFinishAfterTransition()
             }
         }
     }
 
-    private fun setTitleText(id: Int, lastId: Int) {
-        val titleTextView = findViewById<TextView>(R.id.text_section_title)
-        titleTextView.text  = if(id == 0) {
-            "New section (${lastId + 1})"
-        } else {
-            "Section $id"
-        }
+    private fun setTitleText() {
+        val titleText = "Section ${section.title}"
+        text_section_title.text = titleText
     }
 
     companion object {
@@ -80,10 +75,6 @@ class SectionSquadActivity : AppCompatActivity() {
         const val KEY_REQUEST_CODE = "RequestCode"
         const val NEW_SECTION = 1
         const val UPDATE_SECTION = 2
-        const val RESULT_NEW_SECTION = 1
-        const val RESULT_UPDATE_SECTION = 0
-
-
 
         fun makeIntent(context: Context): Intent {
             return Intent(context, SectionSquadActivity::class.java)

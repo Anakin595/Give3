@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+
+    <EditText
+        android:id="@+id/text_listitem_edit_task"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
+        android:inputType="text"
+        android:text="New..."
+        android:textSize="20sp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/clayout_task_edit_bottom_buttons"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/numberpicker_edit_task"
+        />
+
+    <NumberPicker
+        android:id="@+id/numberpicker_edit_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_listitem_edit_task"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_listitem_edit_task" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clayout_task_edit_bottom_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/layout_bottom_buttons"
+        android:elevation="15dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" >
+
+        <Button
+            android:id="@+id/button_task_edit_done"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/baseline_done_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="@+id/button_task_edit_done"
+            app:layout_constraintStart_toStartOf="@+id/button_task_edit_done"
+            app:layout_constraintTop_toBottomOf="@+id/button_task_edit_done" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>
