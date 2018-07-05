@@ -13,7 +13,6 @@
         android:id="@+id/layout_main_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/background_main_buttons"
         android:elevation="10dp"
         android:padding="10dp"
