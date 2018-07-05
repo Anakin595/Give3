@@ -1,6 +1,6 @@
 package com.give3.gizrog.give3.models
 
-class AssessmentSection(val section: Section, var grade: Float, val tasks: ArrayList<Task>) {
+data class AssessmentSection(val section: Section, var grade: Float, val tasks: ArrayList<Task>) {
 
     fun countTasksCompleted(): Int {
         return tasks.count { it.isComplete }

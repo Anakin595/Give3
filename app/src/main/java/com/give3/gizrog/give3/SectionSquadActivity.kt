@@ -44,7 +44,7 @@ class SectionSquadActivity : AppCompatActivity() {
 
     private fun initializeAddPersonButton() {
         findViewById<Button>(R.id.button_section_squad_add).setOnClickListener {
-            section.studentsNames.add("New...")
+            section.studentsNames.add("Name...")
             adapter.notifyDataSetChanged()
         }
     }
@@ -72,8 +72,8 @@ class SectionSquadActivity : AppCompatActivity() {
 
         const val KEY_SECTION = "Section"
         const val KEY_REQUEST_CODE = "RequestCode"
-        const val NEW_SECTION = 1
-        const val UPDATE_SECTION = 2
+        const val NEW_SECTION = 100
+        const val UPDATE_SECTION = 101
 
         fun makeIntent(context: Context): Intent {
             return Intent(context, SectionSquadActivity::class.java)

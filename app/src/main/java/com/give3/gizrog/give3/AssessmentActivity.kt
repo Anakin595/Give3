@@ -1,15 +1,21 @@
 package com.give3.gizrog.give3
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.util.Log
+import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.Toast
 import com.give3.gizrog.give3.adapters.AssessmentExpandableListAdapter
 import com.give3.gizrog.give3.models.AssessmentSection
 import com.give3.gizrog.give3.models.Section
 import com.give3.gizrog.give3.models.Task
+import com.give3.gizrog.give3.services.ExcelService
 
 class AssessmentActivity : AppCompatActivity() {
 
@@ -24,23 +30,19 @@ class AssessmentActivity : AppCompatActivity() {
 
         setAppData()
         initializeExpandableListViewAdapter()
+        setTaskCheckBoxListener()
+        initializeExportButton()
 
-        expandableListView.setOnChildClickListener { parent, view, groupPosition, childPosition, id ->
-            toast("dsffdfssdf!!!")
-            assessmentSections[groupPosition].tasks[childPosition].isComplete = !assessmentSections[groupPosition].tasks[childPosition].isComplete
-            adapter.notifyDataSetChanged()
-             false
-        }
     }
 
     private fun setAppData() {
         val sections: ArrayList<Section> = intent.getParcelableArrayListExtra(KEY_SECTIONS)
         val tasks: ArrayList<Task> = intent.getParcelableArrayListExtra(KEY_TASKS)
         sections.forEach {
-            val sub = tasks.subList(0, tasks.lastIndex+1)
-            val list = ArrayList(sub)
-            val assessmentSection = AssessmentSection(it, 2f, list)
-            assessmentSections.add(assessmentSection) // TODO: check,if tasks are copied for each section
+            val taskSub = ArrayList<Task>()
+            tasks.forEach { taskSub.add(it.copy()) }
+            val assessmentSection = AssessmentSection(it, 2f, taskSub)
+            assessmentSections.add(assessmentSection)
         }
     }
 
@@ -51,8 +53,29 @@ class AssessmentActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun Context.toast(message: CharSequence) =
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun setTaskCheckBoxListener() {
+        expandableListView.setOnChildClickListener { parent, view, groupPosition, childPosition, id ->
+            assessmentSections[groupPosition].tasks[childPosition].isComplete = !assessmentSections[groupPosition].tasks[childPosition].isComplete
+            adapter.parentItemList[groupPosition].grade = adapter.parentItemList[groupPosition].calculateGrade()
+            adapter.notifyDataSetChanged()
+            false
+        }
+    }
+
+    private fun initializeExportButton() {
+        findViewById<Button>(R.id.button_assessment_export).setOnClickListener {
+            val permissionGranted: Boolean = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+            if(permissionGranted) {
+                Log.d("buttonExport", "export: permission granted.")
+                ExcelService.exportAssessmentSectionsToCsv(assessmentSections)
+                Toast.makeText(this, "File saved.", Toast.LENGTH_LONG).show()
+            } else {
+                Log.d("buttonExport", "export: ask permission.")
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 200)
+            }
+
+        }
+    }
 
     companion object {
 

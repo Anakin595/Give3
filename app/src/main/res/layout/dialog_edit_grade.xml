@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="15dp">
 
     <EditText
-        android:id="@+id/text_listitem_edit_task"
+        android:id="@+id/text_listitem_edit_grade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="@string/empty_task_text"
-        android:textSize="20sp"
         android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/clayout_task_edit_bottom_buttons"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/numberpicker_edit_task"
-        />
-
-    <NumberPicker
-        android:id="@+id/numberpicker_edit_task"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/text_listitem_edit_task"
-        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:padding="30dp"
+        android:text="@string/empty_text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/clayout_task_edit_bottom_buttons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_listitem_edit_task" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/clayout_task_edit_bottom_buttons"
@@ -45,7 +38,7 @@
         android:paddingStart="20dp" >
 
         <Button
-            android:id="@+id/button_task_edit_done"
+            android:id="@+id/button_assessment_edit_done"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
@@ -58,9 +51,9 @@
             android:layout_height="wrap_content"
             android:text="@string/done"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/button_task_edit_done"
-            app:layout_constraintStart_toStartOf="@+id/button_task_edit_done"
-            app:layout_constraintTop_toBottomOf="@+id/button_task_edit_done" />
+            app:layout_constraintEnd_toEndOf="@+id/button_assessment_edit_done"
+            app:layout_constraintStart_toStartOf="@+id/button_assessment_edit_done"
+            app:layout_constraintTop_toBottomOf="@+id/button_assessment_edit_done" />
 
     </android.support.constraint.ConstraintLayout>
 

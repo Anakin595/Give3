@@ -131,7 +131,7 @@ class SectionsActivity : BaseAppCompactActivity(), RecyclerViewClickListener {
         const val KEY_SECTION: String = SectionSquadActivity.KEY_SECTION
         const val NEW_SECTION: Int = SectionSquadActivity.NEW_SECTION
         const val UPDATE_SECTION: Int = SectionSquadActivity.UPDATE_SECTION
-        const val RESULT_SECTION: Int = 1
+        const val RESULT_SECTION: Int = 200
 
         fun makeIntent(ctx: Context): Intent {
             return Intent(ctx, SectionsActivity::class.java)

@@ -4,5 +4,4 @@
     android:layout_height="match_parent">
     <solid android:color="@color/colorAccent"/>
     <corners android:radius="4dp"/>
-
 </shape>

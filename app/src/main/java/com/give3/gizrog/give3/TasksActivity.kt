@@ -16,7 +16,6 @@ class TasksActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     private var tasks: ArrayList<Task> = ArrayList()
     private lateinit var listView: ListView
     private lateinit var adapter: TaskListAdapter
-    private var requestCode: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +47,7 @@ class TasksActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     private fun initializeAddButton() {
         findViewById<Button>(R.id.button_task_add).setOnClickListener {
-           tasks.add(Task("new..", 1))
+           tasks.add(Task("Task...", 1))
            adapter.notifyDataSetChanged()
         }
     }
@@ -62,7 +61,7 @@ class TasksActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
                 val bundle = Bundle()
                 bundle.putParcelableArrayList(KEY_TASKS, tasks)
                 resultIntent.putExtras(bundle)
-                setResult(requestCode, resultIntent)
+                setResult(RESULT_TASKS, resultIntent)
                 supportFinishAfterTransition()
             }
         }
@@ -92,7 +91,7 @@ class TasksActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     companion object {
 
-        const val RESULT_TASKS: Int = 0
+        const val RESULT_TASKS: Int = 201
         const val KEY_TASKS: String = "Tasks"
 
         fun makeIntent(ctx: Context): Intent {

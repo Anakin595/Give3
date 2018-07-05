@@ -3,7 +3,7 @@ package com.give3.gizrog.give3.models
 import android.os.Parcel
 import android.os.Parcelable
 
-class Section(var id: Int ,var title: String, var studentsNames: ArrayList<String>, var focus: Float): Parcelable {
+data class Section(var id: Int ,var title: String, var studentsNames: ArrayList<String>, var focus: Float): Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),

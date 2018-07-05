@@ -2,7 +2,6 @@ package com.give3.gizrog.give3
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.ActivityOptionsCompat
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -43,7 +42,7 @@ class MenuActivity : BaseAppCompactActivity() {
         view.setOnClickListener {
             val sectionsIntent = TasksActivity.makeIntent(this@MenuActivity)
             sectionsIntent.putParcelableArrayListExtra(KEY_TASKS, appData?.tasks)
-            startActivityForResult(this, sectionsIntent, REQUEST_TASK, null)
+            startActivityForResult(this, sectionsIntent, RESULT_TASK, null)
         }
     }
 
@@ -61,7 +60,7 @@ class MenuActivity : BaseAppCompactActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when(resultCode) {
             RESULT_SECTION -> appData?.sections = data!!.getParcelableArrayListExtra(KEY_SECTIONS)
-            REQUEST_TASK -> appData?.tasks = data!!.getParcelableArrayListExtra(KEY_TASKS)
+            RESULT_TASK -> appData?.tasks = data!!.getParcelableArrayListExtra(KEY_TASKS)
         }
         updateActivityLayoutStatus()
     }
@@ -80,7 +79,7 @@ class MenuActivity : BaseAppCompactActivity() {
         const val KEY_SECTIONS = SectionsActivity.KEY_SECTIONS
         const val KEY_TASKS = TasksActivity.KEY_TASKS
         const val RESULT_SECTION = SectionsActivity.RESULT_SECTION
-        const val REQUEST_TASK = TasksActivity.RESULT_TASKS
+        const val RESULT_TASK = TasksActivity.RESULT_TASKS
         const val REQUEST_DONE = 10
 
         private val TAG = "MenuActivity"

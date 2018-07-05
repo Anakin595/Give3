@@ -5,29 +5,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/listitem_header_assessment"
     android:padding="10dp"
-    android:background="@drawable/layout_listitem_assessment_header">
+    android:background="@drawable/background_listitem_assessment_header">
 
     <TextView
         android:id="@+id/text_listitem_assessment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sections..."
+        android:text="@string/empty_sections_text"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/text_listitem_assessment_header_grade"
-        android:text="#"
+        android:text="@string/empty_number"
         android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:padding="5dp"
-        android:background="@drawable/layout_person_listitem"
+        android:background="@drawable/background_person_listitem"
         app:layout_constraintEnd_toStartOf="@id/text_listitem_assessment_header_completition"/>
     <TextView
         android:id="@+id/text_listitem_assessment_header_completition"
-        android:text="#/#"
+        android:text="@string/empty_number_status"
         android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

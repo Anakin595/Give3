@@ -2,7 +2,6 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView_section"
     android:layout_width="100dp"
     android:layout_height="100dp"
@@ -31,7 +30,7 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textColor="@color/colorAccent"
             android:textSize="70sp"
-            tools:text="#"
+            android:text="@string/empty_number"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

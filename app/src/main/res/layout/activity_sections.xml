@@ -26,9 +26,9 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:background="@drawable/layout_person_listitem"
+        android:background="@drawable/background_person_listitem"
         android:padding="15dp"
-        android:text="Sections"
+        android:text="@string/sections"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -44,9 +44,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/layout_bottom_buttons"
+        android:background="@drawable/background_bottom_buttons"
         android:elevation="15dp"
-        android:paddingHorizontal="20dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/clayout_bottom_buttons_focus"
@@ -55,14 +56,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button_section_done"
-            android:background="@drawable/layout_bottom_buttons"
+            android:background="@drawable/background_bottom_buttons"
             android:visibility="gone">
 
             <Button
                 android:id="@+id/button_section_edit"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="5dp"
                 android:background="@drawable/baseline_edit_24"
                 app:layout_constraintEnd_toStartOf="@+id/button_section_delete"
                 app:layout_constraintHorizontal_chainStyle="spread_inside" />
@@ -70,10 +70,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Edit"
+                android:text="@string/edit"
                 android:typeface="sans"
                 app:layout_constraintEnd_toEndOf="@+id/button_section_edit"
                 app:layout_constraintStart_toStartOf="@+id/button_section_edit"
@@ -82,14 +79,12 @@
                 android:id="@+id/button_section_delete"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="5dp"
                 android:background="@drawable/baseline_delete_24"
                 app:layout_constraintStart_toEndOf="@id/button_section_edit" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:typeface="sans"
                 app:layout_constraintEnd_toEndOf="@+id/button_section_delete"
                 app:layout_constraintStart_toStartOf="@+id/button_section_delete"
@@ -102,22 +97,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button_section_done"
-            android:background="@drawable/layout_bottom_buttons">
+            android:background="@drawable/background_bottom_buttons">
             <Button
                 android:id="@+id/button_section_add"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="5dp"
                 android:background="@drawable/baseline_group_add_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_chainStyle="spread_inside" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Add"
+                android:text="@string/add"
                 android:typeface="sans"
                 app:layout_constraintEnd_toEndOf="@+id/button_section_add"
                 app:layout_constraintStart_toStartOf="@+id/button_section_add"
@@ -128,7 +119,6 @@
             android:id="@+id/button_section_done"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
             android:background="@drawable/baseline_done_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -136,8 +126,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Done"
+            android:text="@string/done"
             android:typeface="sans"
             app:layout_constraintEnd_toEndOf="@+id/button_section_done"
             app:layout_constraintStart_toStartOf="@+id/button_section_done"

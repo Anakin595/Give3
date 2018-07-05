@@ -11,12 +11,14 @@
         android:id="@+id/text_assessment_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assessment"
-        android:textSize="40sp"
-        android:gravity="center"
+        android:text="@string/assessment"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/layout_header"/>
+        android:background="@drawable/background_header"/>
 
 
 
@@ -42,13 +44,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/layout_bottom_buttons"
+        android:background="@drawable/background_bottom_buttons"
         android:elevation="15dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp" >
 
         <Button
-            android:id="@+id/button_assessment_download"
+            android:id="@+id/button_assessment_export"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/baseline_save_alt_24"
@@ -57,11 +59,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To '.csv'"
+            android:text="@string/download"
             android:typeface="sans"
-            app:layout_constraintEnd_toEndOf="@+id/button_assessment_download"
-            app:layout_constraintStart_toStartOf="@+id/button_assessment_download"
-            app:layout_constraintTop_toBottomOf="@+id/button_assessment_download" />
+            app:layout_constraintEnd_toEndOf="@+id/button_assessment_export"
+            app:layout_constraintStart_toStartOf="@+id/button_assessment_export"
+            app:layout_constraintTop_toBottomOf="@+id/button_assessment_export" />
 
 
     </android.support.constraint.ConstraintLayout>
