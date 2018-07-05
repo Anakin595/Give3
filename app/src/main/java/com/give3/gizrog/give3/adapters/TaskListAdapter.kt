@@ -2,8 +2,6 @@ package com.give3.gizrog.give3.adapters
 
 import android.app.Activity
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,7 @@ class TaskListAdapter(private var activity: Activity, private var items: ArrayLi
         val taskViewHolder: TaskViewHolder
         if (convertView == null) {
             val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.layout_listitem_task, null)
+            view = inflater.inflate(R.layout.listitem_task, null)
             taskViewHolder = TaskViewHolder(view)
             view?.tag = taskViewHolder
         } else {
